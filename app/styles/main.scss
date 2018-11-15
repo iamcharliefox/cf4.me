@@ -475,6 +475,16 @@ section {
     .social-container {
       background-color: $cf-ltblue;
       max-width: 250px;
+      padding: 0 20px;
+
+      @include tablet {
+        max-width: 350px;
+        padding: 0 30px;
+      }
+    }
+
+    a {
+      color: $cf-navy;
     }
 
     img {

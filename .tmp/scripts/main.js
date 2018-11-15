@@ -91,7 +91,7 @@ $('#contact-form').submit(function (e) {
   var url = form.attr('action');
 
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: url,
     data: form.serialize(), // serializes the form's elements.
     success: function success(data) {
