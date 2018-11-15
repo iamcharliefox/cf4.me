@@ -20,7 +20,7 @@ $('a[href*="#"]')
         // Must change focus!
         var $target = $(target);
         $target.focus();
-        if ($target.is(":focus")) {
+        if ($target.is(':focus')) {
           // Checking if the target was focused
           return false;
         } else {
@@ -57,11 +57,11 @@ $('#say-hello').click(function () {
   // $(".form-open").css({"height": "auto"});
 });
 
-$("#scroll-to-hello").click(function () {
+$('#scroll-to-hello').click(function () {
   $('.social-icons').addClass('is-active');
   $('.form-open').addClass('is-active');
   $([document.documentElement, document.body]).animate({
-    scrollTop: $("#say-hello").offset().top - 380
+    scrollTop: $('#say-hello').offset().top - 380
   }, 1000);
 });
 
