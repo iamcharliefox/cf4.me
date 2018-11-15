@@ -72,7 +72,7 @@ $('#scroll-to-hello').click(function () {
 
 $('.say-hello').click(function () {
 
-  if($('.form-open').hasClass('is-active')){
+  if ($('.form-open').hasClass('is-active')) {
     $('#say-hello').hide()
     $('#say-hello-submit').show();
     $('.message-open').addClass('is-not-active');
@@ -92,28 +92,26 @@ $('.success-delete').click(function () {
 });
 
 
-$('#contact-form').submit(function(e) {
+$('#contact-form').submit(function (e) {
 
 
   var form = $(this);
   var url = form.attr('action');
 
   $.ajax({
-         type: 'POST',
-         url: url,
-         data: form.serialize(), // serializes the form's elements.
-         success: function(data)
-         {
-          console.log('foo');
-          $('.message-open').removeClass('is-not-active');
-          $('.form-open').removeClass('is-active');
-          $('#say-hello').fadeOut(300);
-          $('#submit-success').fadeIn(300);
-          $('#say-hello-submit').hide()
-          $('.social-icons').removeClass('is-active')
-         }
-       });
+    url: 'https://usebasin.com/f/d9106c339bf7.json',
+    method: 'POST',
+    data: form.serialize(), // serializes the form's elements.
+    success: function (data) {
+      console.log('foo');
+      $('.message-open').removeClass('is-not-active');
+      $('.form-open').removeClass('is-active');
+      $('#say-hello').fadeOut(300);
+      $('#submit-success').fadeIn(300);
+      $('#say-hello-submit').hide()
+      $('.social-icons').removeClass('is-active')
+    }
+  });
 
   e.preventDefault(); // avoid to execute the actual submit of the form.
 });
-
