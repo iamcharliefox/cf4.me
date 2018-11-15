@@ -64,7 +64,7 @@ $('#scroll-to-hello').click(function () {
   $('.social-icons').addClass('is-active');
   $('.form-open').addClass('is-active');
   $([document.documentElement, document.body]).animate({
-    scrollTop: $('#say-hello').offset().top - 380
+    scrollTop: $('.contact-box').offset().top - 100
   }, 1000);
 
 });
