@@ -91,8 +91,8 @@ $('#contact-form').submit(function (e) {
   var url = form.attr('action');
 
   $.ajax({
-    url: 'https://usebasin.com/f/d9106c339bf7.json',
-    method: 'POST',
+    type: "POST",
+    url: url,
     data: form.serialize(), // serializes the form's elements.
     success: function success(data) {
       console.log('foo');
