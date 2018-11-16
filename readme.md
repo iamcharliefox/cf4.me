@@ -2,7 +2,7 @@
 
 # CF4
 
-The personal landing page of Charlie Fox -  cf4.me
+The personal landing page and portfolio of Charlie Fox -  cf4.me
 
 
 

@@ -1,3 +1,6 @@
+$('document').ready(function(){
+
+// smooth scrolling from https://css-tricks.com/snippets/jquery/smooth-scrolling/
 // Select all links with hashes
 $('a[href*="#"]')
   // Remove links that don't actually link to anything
@@ -34,84 +37,79 @@ $('a[href*="#"]')
     }
   });
 
-ScrollOut({
-  targets: '.skills-box',
-  offset: 350
-});
-
-// ScrollOut({
-//   targets: '.recent-container',
-//   once: true
-// });
-
-
-ScrollOut({
-  targets: '.contact-box'
-  // offset: 20
-  // once: true
-});
-
-$('#say-hello').click(function () {
-
-  console.log('hello');
-  $('.social-icons').addClass('is-active');
-  $('.form-open').toggleClass('is-active');
-  // $(".form-open").css({"height": "auto"});
-});
-
-
-$('#scroll-to-hello').click(function () {
-  $('.social-icons').addClass('is-active');
-  $('.form-open').addClass('is-active');
-  $([document.documentElement, document.body]).animate({
-    scrollTop: $('.contact-box').offset().top - 100
-  }, 1000);
-
-});
-
-
-$('.say-hello').click(function () {
-
-  if ($('.form-open').hasClass('is-active')) {
-    $('#say-hello').hide()
-    $('#say-hello-submit').show();
-    $('.message-open').addClass('is-not-active');
-  } else {
-    $('#say-hello-submit').hide();
-    $('#say-hello').show()
-    $('.message-open').fadeIn(300);
-    $('.message-open').removeClass('is-not-active');
-  }
-
-});
-
-$('.success-delete').click(function () {
-
-  $('#submit-success').hide();
-  $('#say-hello').show();
-});
-
-
-$('#contact-form').submit(function (e) {
-
-
-  var form = $(this);
-  var url = form.attr('action');
-
-  $.ajax({
-    type: 'POST',
-    url: url,
-    data: form.serialize(), // serializes the form's elements.
-    success: function (data) {
-      console.log('foo');
-      $('.message-open').removeClass('is-not-active');
-      $('.form-open').removeClass('is-active');
-      $('#say-hello').fadeOut(300);
-      $('#submit-success').fadeIn(300);
-      $('#say-hello-submit').hide()
-      $('.social-icons').removeClass('is-active')
-    }
+  // ScrollOut - https://scroll-out.github.io/guide.html
+  // animates the skillsbox when it is displayed in the viewport
+  ScrollOut({
+    targets: '.skills-box',
+    offset: 350
+  });
+  // animates the skillsbox when it is displayed in the viewport
+  ScrollOut({
+    targets: '.contact-box'
   });
 
-  e.preventDefault(); // avoid to execute the actual submit of the form.
+  // contact box events
+  $('#contact-form').submit(function (e) {
+    var form = $(this);
+    var url = form.attr('action');
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: form.serialize(), // serializes the form's elements.
+      success: function (data) {
+        console.log('foo');
+        $('.message-open').removeClass('is-not-active');
+        $('.form-open').removeClass('is-active');
+        $('#say-hello').fadeOut(300);
+        $('#submit-success').fadeIn(300);
+        $('#say-hello-submit').hide()
+        $('.social-icons').removeClass('is-active')
+      }
+    });
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+  });
+
+  $('#say-hello').click(function () {
+    $('.social-icons').addClass('is-active');
+    $('.form-open').toggleClass('is-active');
+  });
+  
+  $('#scroll-to-hello').click(function () {
+    $('.social-icons').addClass('is-active');
+    $('.form-open').addClass('is-active');
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $('.contact-box').offset().top - 100
+    }, 1000);
+  });
+  
+  $('.say-hello').click(function () {
+    if ($('.form-open').hasClass('is-active')) {
+      $('#say-hello').hide()
+      $('#say-hello-submit').show();
+      $('.message-open').addClass('is-not-active');
+    } else {
+      $('#say-hello-submit').hide();
+      $('#say-hello').show()
+      $('.message-open').fadeIn(300);
+      $('.message-open').removeClass('is-not-active');
+    }
+  });
+  
+  $('.success-delete').click(function () {
+    $('#submit-success').hide();
+    $('#say-hello').show();
+  });  
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
